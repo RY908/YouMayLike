@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
-body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Montserrat; background: #313E50; margin: 0; padding: 0; }
+body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Montserrat; background: #313E50; margin: 0; padding: 0; margin-left: 5px; margin-right: 5px; }
 
 .neon { position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); margin: 0; padding: 0 20px; font-size: 4em; color: #fb8b24; text-shadow: 0 0 50px #fb8b24; letter-spacing: 5px; white-space: nowrap; }
 
