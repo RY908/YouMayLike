@@ -1,0 +1,38 @@
+{% load i18n static %}
+{% load static %}
+{% load sass_tags %}
+<link rel="stylesheet" type="text/css" href="{% static 'YML/index.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% sass_src 'YML/index.scss' %}" type="text/css"> 
+  <title>You may like...</title>
+</head>
+<body>
+<h1 class="neon" data-text="[Neon_Friday]">YOU MAY LIKE...</h1>
+<h1 class="question">Tell me your favorite artist.</h1>
+{% for message in messages %}
+  <div class="alert alert-success">
+  <a class="close" href="#" data-dismiss="alert"></a>
+    {{ message }}
+  </div>
+{% endfor %}
+<form action="{% url 'YML:form' %}" method="post" class="form">
+{% csrf_token %}
+  <div class="text-input">
+    <!--<label for="id_artist_name">Artist Name</label>-->
+    <input type="text" name="artist_name" maxlength="100" required id="id_artist_name" placeholder="Enter your favorite artist", id="input1">
+    <label for="input1">Artist Name</label>
+    <input type="submit" value="Search">
+  </div>
+</form>
+<div class="explanation">
+  This web site uses Spotify API to search a song from global top chart similar to your favorite artist's songs.
+</div>
+</body>
+</html>
+

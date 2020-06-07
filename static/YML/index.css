@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Montserrat; background: #313E50; margin: 0; padding: 0; }
+
+.neon { position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); margin: 0; padding: 0 20px; font-size: 4em; color: #fb8b24; text-shadow: 0 0 50px #fb8b24; letter-spacing: 5px; white-space: nowrap; }
+
+.neon:after { content: attr(data-text); position: absolute; top: 0; left: 0; padding: 0 20px; z-index: -1; color: #fb8b24; filter: blur(15px); }
+
+.neon:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fb8b24; z-index: -2; opacity: .3; filter: blur(50px); }
+
+.text-input { position: relative; margin-top: 50px; }
+
+.text-input input[type="text"] { display: inline-block; width: 500px; height: 40px; box-sizing: border-box; outline: none; border: 1px solid lightgray; border-radius: 3px; padding: 10px 10px 10px 150px; transition: all 0.1s ease-out; }
+
+.text-input input[type="text"] + label { position: absolute; top: 0; left: 0; bottom: 0; height: 40px; line-height: 40px; color: white; border-radius: 3px 0 0 3px; padding: 0 20px; background: #E03616; transform: translateZ(0) translateX(0); transition: all 0.3s ease-in; transition-delay: 0.2s; }
+
+.text-input input[type="text"]:focus + label { transform: translateY(-120%) translateX(0%); border-radius: 3px; transition: all 0.1s ease-out; }
+
+.text-input input[type="text"]:focus { padding: 10px; transition: all 0.3s ease-out; transition-delay: 0.2s; }
+
+.question { color: white; }
+
+.explanation { position: absolute; bottom: 20px; color: white; margin-left: 5px; margin-right: 5px; }
+
+/*# sourceMappingURL=index.css.map */

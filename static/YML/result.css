@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@keyframes typing { from { width: 0; } }
+
+@keyframes caret { 50% { border-color: transparent; } }
+
+body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: Montserrat; background: #313E50; margin: 0; padding: 0; }
+
+.result { color: white; }
+
+.YML { font-family: monospace; height: 100px; width: 11ch; border-right: .08em solid; overflow: hidden; font-size: 4em; white-space: nowrap; animation: typing 3s steps(11, end), caret 0.5s step-end infinite; }
+
+.fadein { opacity: 0; animation: fadein 6s ease forwards; }
+
+@keyframes fadein { 100% { opacity: 1; } }
+
+.song_info { animation-delay: 3s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/*# sourceMappingURL=result.css.map */

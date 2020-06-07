@@ -1,0 +1,31 @@
+{% load i18n static %}
+{% load static %}
+{% load sass_tags %}
+<link rel="stylesheet" type="text/css" href="{% static 'YML/result.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% sass_src 'YML/result.scss' %}" type="text/css"> 
+  <title>You may like...</title>
+</head>
+<body>
+<div class="result">
+{% if artist_names %}
+  <h1 class="YML">You may like...</h1>
+  <div class="fadein song_info">
+  <h2>{{song_name}}</h2>
+  <img src= {{ image_uri }} >
+  <br>
+  By {{artist_names}}
+  <br>
+  <a href={{uri}}>You can check this song here.</a>
+  </div>
+{% else %}
+  <p>Coundn't find a track. Please try again.</p>
+{% endif %}
+</div>
+</body>
+</html>
