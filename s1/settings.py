@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 's1.urls'
@@ -128,7 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #'staticfiles'
 
 # Sass/SCSS
 SASS_PROCESSOR_AUTO_INCLUDE = False
@@ -159,3 +160,5 @@ if not DEBUG:
     SECRET_KEY = os.environ['SECRET_KEY']
     CLIENT_ID = os.environ['CLIENT_ID']
     CLIENT_SECRET = os.environ['CLIENT_SECRET']
+    import django_heroku #追加
+    django_heroku.settings(locals()) #追加
