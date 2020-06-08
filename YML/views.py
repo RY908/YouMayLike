@@ -11,6 +11,7 @@ from .forms import ArtistNamesForm
 
 from .models import Information
 from .search_info import search_info, chart_tracks, distance 
+from .shape import shape_data
 
 def index(request):
   context = {'form': ArtistNamesForm()}
@@ -25,21 +26,19 @@ def NameForm(request):
   print("errro")
   form.add_error(None, "Please try again.")
   return render(request, 'YML/index.html', {'form': form})
-  """
-  if request.method == 'POST':
-    name = request.POST['artist_name']
-    return HttpResponseRedirect(reverse('YML:spotify', args=(name,)))
-  else:
-    context = {'form1': ArtistNamesForm(), 'error_message': [], 'name':""}
-    return render(request, 'YML/index.html', context)
-  """
 
 def spotify(request, name):
   try:
-    artist_info = search_info(name)
+    artist_data = Information.objects.get(name=name)
+    print(type(artist_data))
+    artist_info = shape_data(data=artist_data, from_data=True)
   except:
-    messages.error(request,'There is no artist named {}. Please try again.'.format(name))
-    return HttpResponseRedirect(reverse('YML:index', args=()))
+    try:
+      artist_info = search_info(name)   
+      shape_data(artist_info=artist_info, from_data=False)
+    except:
+      messages.error(request,'There is no artist named {}. Please try again.'.format(name))
+      return HttpResponseRedirect(reverse('YML:index', args=()))
   try:
     song_info = chart_tracks()
   except:

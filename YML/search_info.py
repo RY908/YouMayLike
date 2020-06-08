@@ -12,6 +12,9 @@ except ImportError:
     pass
 
 def chart_tracks():
+  """
+
+  """
   client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials(CLIENT_ID, CLIENT_SECRET)
 
   # make Spotify instance
@@ -33,8 +36,6 @@ def chart_tracks():
             'time_signature': f['time_signature'], 'valence': f['valence'], 'uri': f['uri']}
     song_infos.append(tmp)
 
-  print(spotify.track('3Z8FwOEN59mRMxDCtb8N0A')['album']['images'][0]['url'])
-
   return song_infos
 
 def search_info(name):
@@ -48,7 +49,6 @@ def search_info(name):
     information = spotify.search(q=['artist:'+name], limit=20, offset=0, type='track', market=None)
   except spotipy.oauth2.SpotifyOauthError as e:
     return e
-  #print(information)
 
   # track ids
   id_list = []
@@ -91,7 +91,7 @@ def search_info(name):
   for key in artist_info.keys():
     if key != 'artist_name':
       artist_info[key] /= len(features)  
-
+  print(artist_info)
   return artist_info
 
 
