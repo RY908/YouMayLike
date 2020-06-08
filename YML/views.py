@@ -28,19 +28,14 @@ def NameForm(request):
 
 def spotify(request, name):
   try:
-    print("1-1")
     artist_data = Information.objects.get(name=name)
     artist_info = shape_data(data=artist_data, from_data=True)
-    print("1-2")
   except:
     try:
-      print("2-1")
       artist_info = search_info(name)   
       shape_data(artist_info=artist_info, from_data=False)
-      print("2-2")
     except:
       messages.error(request,'There is no artist named {}. Please try again.'.format(name))
-      print("3")
       return HttpResponseRedirect(reverse('YML:index', args=()))
   try:
     song_info = chart_tracks()

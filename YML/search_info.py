@@ -92,7 +92,7 @@ def search_info(name):
   for key in artist_info.keys():
     if key != 'artist_name':
       artist_info[key] /= len(features)  
-  print(artist_info)
+
   return artist_info
 
 
@@ -161,8 +161,3 @@ def distance(artist_info, song_info):
   image_uri = detected_song_info['images'][1]['url']
 
   return song_name, artist_names, image_uri, uri
-
-#song_info = chart_tracks()
-#artist_info = search_info('Against the current')
-#print(distance(artist_info, song_info))
-
