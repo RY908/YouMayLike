@@ -13,16 +13,17 @@ except ImportError:
 
 def chart_tracks():
   """
-
+  collect information about the song on global top 50 chart
   """
   client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials(CLIENT_ID, CLIENT_SECRET)
 
-  # make Spotify instance
+  # connect to spotify
   spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-  id_list = []
-  playlist_id = '37i9dQZEVXbMDoHDwVN2tF'
-  playlist = spotify.playlist(playlist_id)
+
+  id_list = [] # ids of songs from chart
+  playlist_id = '37i9dQZEVXbMDoHDwVN2tF' # chart id
+  playlist = spotify.playlist(playlist_id) # get 
   for item in playlist['tracks']['items']: 
     track = item['track']
     id_list.append(track['id'])

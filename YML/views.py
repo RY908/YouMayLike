@@ -30,7 +30,6 @@ def NameForm(request):
 def spotify(request, name):
   try:
     artist_data = Information.objects.get(name=name)
-    print(type(artist_data))
     artist_info = shape_data(data=artist_data, from_data=True)
   except:
     try:
