@@ -1,4 +1,4 @@
-
+from .models import Information
 
 def shape_data(artist_info=None, data=None, from_data=False):
   """
