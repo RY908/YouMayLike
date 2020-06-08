@@ -75,19 +75,31 @@ WSGI_APPLICATION = 's1.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 """
 # 代わりに以下を追加
 import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(),
 }
+"""
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = 'staticfiles'
+DEBUG = False
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
