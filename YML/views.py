@@ -38,7 +38,7 @@ def spotify(request, name):
       messages.error(request,'There is no artist named {}. Please try again.'.format(name))
       return HttpResponseRedirect(reverse('YML:index', args=()))
   try:
-    song_info = chart_tracks()
+    song_info = chart_tracks(name)
   except:
     messages.error(request, 'There is an error processing chart tracks. Please try again.')
     return HttpResponseRedirect(reverse('YML:index', args=()))

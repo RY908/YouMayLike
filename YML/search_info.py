@@ -11,7 +11,7 @@ try:
 except ImportError:
     pass
 
-def chart_tracks():
+def chart_tracks(artist_name):
   """
   collect information about the song on global top 50 chart
   """
@@ -25,6 +25,8 @@ def chart_tracks():
   playlist_id = '37i9dQZEVXbMDoHDwVN2tF' # chart id
   playlist = spotify.playlist(playlist_id) # get 
   for item in playlist['tracks']['items']: 
+    if artist_name == item['track']['album']['artists'][0]['name']: # if the artist is in the chart don't count him or her in
+      continue
     track = item['track']
     id_list.append(track['id'])
 
