@@ -24,6 +24,7 @@ def chart_tracks(artist_name):
   id_list = [] # ids of songs from chart
   playlist_id = '37i9dQZEVXbMDoHDwVN2tF' # chart id
   playlist = spotify.playlist(playlist_id) # get 
+  
   for item in playlist['tracks']['items']: 
     if artist_name == item['track']['album']['artists'][0]['name']: # if the artist is in the chart don't count him or her in
       continue
@@ -33,6 +34,8 @@ def chart_tracks(artist_name):
   features = spotify.audio_features(id_list)
   song_infos = []
   for f in features:
+    if f == None:
+      continue
     tmp = {'acousticness': f['acousticness'], 'danceability': f['danceability'], 'energy': f['energy'], 
             'instrumentalness': f['instrumentalness'], 'key': f['key'], 'liveness': f['liveness'], 
             'loudness': f['loudness'], 'speechiness': f['speechiness'], 'tempo': f['tempo'], 
@@ -163,3 +166,4 @@ def distance(artist_info, song_info):
   image_uri = detected_song_info['images'][1]['url']
 
   return song_name, artist_names, image_uri, uri
+
